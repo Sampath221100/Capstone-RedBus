@@ -6,7 +6,7 @@ import streamlit as st
 con = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="expert789",
+    password="12345678",
     database="RedBus"
 )
 cursor = con.cursor(dictionary=True)
