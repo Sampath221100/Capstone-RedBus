@@ -69,8 +69,7 @@ Price: The cost of the ticket for the journey, which can vary based on factors l
 
 Seat Availability: The number of seats available at the time of data scraping, giving real-time insight into the occupancy levels.
 
-Database Schema:  Table: bus_routes
-Primary Key: To ensure each record is unique, an auto-incrementing primary key (id) is used.
+Database Schema:  Table: bus_routes Primary Key: To ensure each record is unique, an auto-incrementing primary key (id) is used.
 
 
 
