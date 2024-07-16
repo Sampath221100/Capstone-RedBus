@@ -40,6 +40,15 @@ bus_type = st.sidebar.selectbox('Select Bus Type', ['', *bus_types])
 seat_types = ['Sleeper', 'Semi Sleeper', 'Seater', 'Others']
 seat_type = st.sidebar.selectbox('Select Seat Type', ['', *seat_types])
 
+#Unique Bus tourisms
+tc_ending_names=[]
+for busname in df['busname']:
+    busname_split=busname.split(' - ')[0]
+    if busname_split.endswith('TC'):
+        if busname_split not in tc_ending_names:
+            tc_ending_names.append(busname_split)
+bus_tourism = st.sidebar.selectbox('Select Tourism Name', ['', *tc_ending_names, 'Private'])
+
 # Hours of departure
 bus_hours_disp = {}
 for i in range(24):
@@ -68,6 +77,12 @@ query = "SELECT * FROM bus_routes WHERE 1=1"
 if route_name:
     query += f" AND route_name = '{route_name}'"
 
+if bus_tourism:
+    if bus_tourism != 'Private':
+        query += f" AND busname like '%{bus_tourism}%'"
+    elif bus_tourism == 'Private':
+        query += f" AND busname NOT LIKE '%-%'"
+        
 if bus_type == 'AC':
     query += " AND (bustype REGEXP 'AC|A.C|A/C') AND (bustype NOT REGEXP 'Non AC|Non A/C|Non A.C|NON-AC')"
 elif bus_type == 'Non AC':
