@@ -162,8 +162,8 @@ def write_into_db(df):
     for index in df.index:
         row_data = list(df.loc[index].values)
         result.append(row_data)
-    cursor.executemany(query,
-                       result)  # execute many and storing data in list as it connects to the db once it finishes getting input rather than each time
+    cursor.executemany(query, result)  
+    # execute many and storing data in list as it connects to the db once it finishes getting input rather than each time
     con.commit()
 
 
