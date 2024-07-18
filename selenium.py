@@ -163,6 +163,7 @@ def write_into_db(df):
         row_data = list(df.loc[index].values)
         result.append(row_data)
     cursor.executemany(query, result)  
+    
     # execute many and storing data in list as it connects to the db once it finishes getting input rather than each time
     con.commit()
 
@@ -201,6 +202,7 @@ def get_urls(url):
                 url_extracted = url_to_extract.get_attribute('href')
                 #print(url_extracted)
                 routes_urls.append(url_extracted)
+                
         # Usually the page 1 is not clickable since it is active, so we need to catch the exception
         except ElementClickInterceptedException:
             print('the page is not not clickable')
